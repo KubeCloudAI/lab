@@ -111,5 +111,11 @@ resource "aws_instance" "web-1" {
     Owner      = "necromonger"
     CostCenter = "tesla"
   }
+  lifecycle {
+    create_before_destroy = true
+  }
+  #   lifecycle {
+  #     prevent_destroy = true
+  #   }
 }
 
