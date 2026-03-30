@@ -1,0 +1,13 @@
+#!/bin/bash
+ set -euxo pipefail
+
+ apt update -y
+ DEBIAN_FRONTEND=noninteractive apt install -y nginx git zip
+
+
+ git clone https://github.com/saikiranpi/SecOps-game.git /tmp/SecOps-game || true
+ cp /tmp/SecOps-game/index.html /var/www/html/index.html
+ echo "<h1>${vpc_name}-public-Server-${instance_index}</h1>" >> /var/www/html/index.html
+ 
+ systemctl enable nginx
+ systemctl restart nginx
